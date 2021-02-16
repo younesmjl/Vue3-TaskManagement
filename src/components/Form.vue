@@ -1,6 +1,7 @@
 <template>
   <h3>Créer une tâche</h3>
-  <form>
+  <!-- plutot que v-on:submit on pourrait simplifier par @submit -->
+  <form v-on:submit.prevent="createTask">
     <input type="text" placeholder="Nom de latâche" v-model="name" />
     <br />
     <textarea
@@ -52,11 +53,29 @@ export default {
     ]);
     const temporality = ref("short-term");
 
+    function createTask() {
+      const task = {
+        id: Date.now(),
+        name: name.value,
+        description: description.value,
+        temporality: temporality.value,
+      };
+      console.log("task", task);
+      resetForm();
+    }
+
+    function resetForm() {
+      name.value = "";
+      description.value = "";
+      temporality.value = "";
+    }
+
     return {
       name,
       description,
       temporalityTypes,
       temporality,
+      createTask,
     };
   },
 };
