@@ -1,17 +1,25 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Progressr (compoAPI)" />
+    <HelloWorld msg="Progressor (compoAPI)" />
+    <Form v-on:createtaskParent="addTask" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-
+import Form from "@/components/Form.vue";
 export default {
   name: "Home",
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+    Form,
+  },
+  setup() {
+    function addTask(data) {
+      console.log("Home.vue | addTask()", data);
+    }
+    return { addTask };
+  },
 };
 </script>
