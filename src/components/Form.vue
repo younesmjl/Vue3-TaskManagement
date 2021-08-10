@@ -2,9 +2,15 @@
   <h3>Créer une tâche</h3>
   <!-- plutot que v-on:submit on pourrait simplifier par @submit -->
   <form v-on:submit.prevent="createTask">
-    <input type="text" placeholder="Nom de la tâche" v-model="name" />
+    <input
+      class="with-border-all border-width-1"
+      type="text"
+      placeholder="Nom de la tâche"
+      v-model="name"
+    />
     <br />
     <textarea
+      class="with-border-all border-width-1"
       cols="30"
       rows="10"
       v-model="description"
@@ -12,7 +18,7 @@
     >
     </textarea>
     <br />
-    <select v-model="temporality">
+    <select class="border-all-primary" v-model="temporality">
       <option
         v-for="tempo in temporalityTypes"
         v-bind:value="tempo.value"
@@ -22,7 +28,7 @@
       </option>
     </select>
     <br />
-    <button>créer</button>
+    <button class="button background-primary">créer</button>
   </form>
 </template>
 
@@ -61,7 +67,7 @@ export default {
         description: description.value,
         temporality: temporality.value,
       };
-      console.log("task", task);
+      console.log("Form.vue | createTask() | task", task);
 
       //emit permet de créer un evenement que le parent peut ecouté et donc utilisé
       context.emit("createtaskParent", task);
