@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
     <router-link to="/">Accueil</router-link> |
-    <router-link to="/about">A propos</router-link> |
-    <router-link to="/tasks">Tâches à faire</router-link>
+    <router-link to="/tasks">Tâches à faire</router-link> |
+    <router-link to="/about">A propos</router-link>
   </div>
   <router-view />
 </template>
@@ -15,6 +15,7 @@
   text-align: center;
   color: #2c3e50;
   max-width: 860px;
+  margin: 0 auto;
 }
 
 #nav {
@@ -25,7 +26,7 @@
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #f56b2a;
     }
   }
 }
