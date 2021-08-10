@@ -3,7 +3,7 @@
     <div class="border-all-secondary with-margin-all-20">
       <h3>Titre : {{ task.name }}</h3>
       <p>Description : {{ task.description }}</p>
-      <p>Echéance: {{ task.temporality }}</p>
+      <p>Echéance: {{ tasksService.convertCase(task.temporality) }}</p>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   setup() {
     const tasks = ref("");
     tasks.value = tasksService.read();
-    return { tasks };
+    return { tasks, tasksService };
   },
 };
 </script>
