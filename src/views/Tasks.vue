@@ -6,7 +6,7 @@
     v-model="letters"
     @keyup="filter"
   />
-  <div v-for="task in tasks" :key="task.id">
+  <div v-for="task in tasksFiltered" :key="task.id">
     <div class="border-all-secondary with-margin-all-20">
       <h3>Titre : {{ task.name }}</h3>
       <p>Description : {{ task.description }}</p>
@@ -25,6 +25,7 @@ export default {
     const letters = ref("");
     tasks.value = tasksService.read();
     const tasksFiltered = ref("");
+    filter();
 
     function filter() {
       if (letters.value.length == 0) {
