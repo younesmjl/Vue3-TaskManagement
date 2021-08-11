@@ -24,12 +24,19 @@ export default {
     const tasks = ref("");
     const letters = ref("");
     tasks.value = tasksService.read();
+    const tasksFiltered = ref("");
 
     function filter() {
-      console.log(letters.value);
+      if (letters.value.length == 0) {
+        tasksFiltered.value = tasks.value;
+      } else {
+        tasksFiltered.value = tasks.value.filter((t) =>
+          t.name.toLocaleLowerCase().includes(letters.value.toLocaleLowerCase())
+        );
+      }
     }
 
-    return { tasks, tasksService, letters, filter };
+    return { tasks, tasksService, letters, filter, tasksFiltered };
   },
 };
 </script>
