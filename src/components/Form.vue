@@ -30,12 +30,20 @@
       </option>
     </select>
     <br />
-    <button class="button background-primary">créer</button>
+    <button
+      class="button"
+      v-bind:class="[
+        isFormvalid ? 'background-cgreen' : 'background-primary-light',
+      ]"
+      :disabled="!isFormvalid"
+    >
+      créer
+    </button>
   </form>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 export default {
   name: "Form",
@@ -87,6 +95,18 @@ export default {
       txtName.value.focus();
     });
 
+    const isFormvalid = computed(() => {
+      if (
+        name.value != "" &&
+        description.value != "" &&
+        temporality.value != ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
     return {
       name,
       description,
@@ -94,6 +114,7 @@ export default {
       temporality,
       createTask,
       txtName,
+      isFormvalid,
     };
   },
 };
