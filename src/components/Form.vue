@@ -3,10 +3,12 @@
   <!-- plutot que v-on:submit on pourrait simplifier par @submit -->
   <form v-on:submit.prevent="createTask">
     <input
+      id="textName"
       class="with-border-all border-width-1"
       type="text"
-      placeholder="Nom de la tâche"
       v-model="name"
+      placeholder="Nom de la tâche"
+      ref="txtName"
     />
     <br />
     <textarea
@@ -33,7 +35,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 export default {
   name: "Form",
@@ -59,6 +61,7 @@ export default {
       },
     ]);
     const temporality = ref("short-term");
+    let txtName = ref(null);
 
     function createTask() {
       const task = {
@@ -72,6 +75,7 @@ export default {
       //emit permet de créer un evenement que le parent peut ecouté et donc utilisé
       context.emit("createtaskParent", task);
       resetForm();
+      txtName.value.focus();
     }
 
     function resetForm() {
@@ -79,6 +83,9 @@ export default {
       description.value = "";
       temporality.value = "";
     }
+    onMounted(() => {
+      txtName.value.focus();
+    });
 
     return {
       name,
@@ -86,17 +93,21 @@ export default {
       temporalityTypes,
       temporality,
       createTask,
+      txtName,
     };
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss" >
 input,
 textarea,
 select,
 button {
   width: 90%;
   margin: 5px 10px;
+  &:focus {
+    border-color: #f56b2a;
+  }
 }
 </style>
