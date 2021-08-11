@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Progressor (compoAPI)" />
+    <HelloWorld msg="Gestionnaire de tâches" />
     <Form v-on:createtaskParent="addTask" />
   </div>
 </template>
