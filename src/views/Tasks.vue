@@ -52,6 +52,11 @@
       <h3>Titre : {{ task.name }}</h3>
       <p>Description : {{ task.description }}</p>
       <p>Echéance: {{ tasksService.convertCase(task.temporality) }}</p>
+      <div class="with-margin-top">
+        <button class="button background-cred" v-on:click="deleteTask(task.id)">
+          Supprimer
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -84,6 +89,12 @@ export default {
       }
     }
 
+    function deleteTask(id) {
+      tasksService.deleteTask(id);
+      tasks.value = tasksService.read();
+      filter();
+    }
+
     watch(selectedTemporality, (newValue, oldValue) => {
       console.log(
         "Tasks.vue | watch | newvalue :",
@@ -106,6 +117,7 @@ export default {
       filter,
       tasksFiltered,
       selectedTemporality,
+      deleteTask,
     };
   },
 };
