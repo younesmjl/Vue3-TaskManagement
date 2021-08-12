@@ -1,4 +1,10 @@
 <template>
+  <Modal
+    v-if="isInEditMode"
+    :task="taskToEdit"
+    @updatetask="updateTask($event)"
+    @cancel="cancelEdit"
+  />
   <input
     class="border-all-primary border-width-1"
     type="text"
@@ -56,6 +62,12 @@
         <button class="button background-cred" v-on:click="deleteTask(task.id)">
           Supprimer
         </button>
+        <button
+          class="button background-cblue-light with-margin-left"
+          @click="() => toggle(task)"
+        >
+          modifier
+        </button>
       </div>
     </div>
   </div>
@@ -64,14 +76,21 @@
 <script>
 import { ref, watch } from "vue";
 import tasksService from "@/services/tasks.js";
+import Modal from "@/components/Modal.vue";
+
 export default {
   name: "Tasks",
+  components: {
+    Modal,
+  },
   setup() {
     const tasks = ref("");
     const letters = ref("");
     const selectedTemporality = ref("");
     tasks.value = tasksService.read();
     const tasksFiltered = ref("");
+    let isInEditMode = ref(false);
+    let taskToEdit = ref(null);
     filter();
 
     function filter() {
@@ -89,10 +108,27 @@ export default {
       }
     }
 
+    function toggle(task) {
+      taskToEdit.value = task;
+      isInEditMode.value = true;
+    }
+
+    function updateTask(task) {
+      tasksService.updateTask(task);
+      tasks.value = tasksService.read();
+      filter();
+      cancelEdit();
+    }
+
     function deleteTask(id) {
       tasksService.deleteTask(id);
       tasks.value = tasksService.read();
       filter();
+    }
+
+    function cancelEdit() {
+      isInEditMode.value = false;
+      taskToEdit.value = null;
     }
 
     watch(selectedTemporality, (newValue, oldValue) => {
@@ -118,6 +154,11 @@ export default {
       tasksFiltered,
       selectedTemporality,
       deleteTask,
+      isInEditMode,
+      taskToEdit,
+      toggle,
+      updateTask,
+      cancelEdit,
     };
   },
 };
