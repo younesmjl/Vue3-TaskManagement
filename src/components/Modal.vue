@@ -33,7 +33,10 @@
               <textarea
                 class="border-all border-width-1 with-margin-bottom"
                 v-model="taskToEdit.description"
+                rows="1"
                 placeholder="Description de la tâche"
+                @keyup="resizeTextArea"
+                ref="textAreaRef"
               ></textarea
               ><br />
               <select
@@ -47,17 +50,24 @@
                   :selected="tempo.value === taskToEdit.temporality"
                 >
                   {{ tempo.name }}
-                </option></select
-              ><br />
-              <button
-                class="button background-cblue with-margin-bottom"
-                :disabled="!isFormValid"
+                </option>
+              </select>
+              <div
+                class="display-flex justify-content-flex-end with-margin-top"
               >
-                sauvegarder
-              </button>
-              <button class="button background-cred" @click="cancel">
-                annuler
-              </button>
+                <button
+                  class="button background-cblue"
+                  :disabled="!isFormValid"
+                >
+                  sauvegarder
+                </button>
+                <button
+                  class="button background-cred with-margin-left"
+                  @click="cancel"
+                >
+                  annuler
+                </button>
+              </div>
             </form>
           </div>
           <div
@@ -105,6 +115,7 @@ export default {
     },
   },
   setup(props, context) {
+    //Variable
     let taskToEdit = ref({ ...props.task });
     const temporalityTypes = ref([
       {
@@ -124,6 +135,9 @@ export default {
       },
     ]);
     let temporality = ref("");
+    let textAreaRef = ref("");
+
+    //Method
     function saveTask() {
       const taskUpdated = {
         id: taskToEdit.value.id,
@@ -148,6 +162,12 @@ export default {
         return false;
       }
     });
+
+    function resizeTextArea() {
+      textAreaRef.value.style.height = "auto";
+      textAreaRef.value.style.height = `${textAreaRef.value.scrollHeight}px`;
+    }
+
     return {
       temporalityTypes,
       temporality,
@@ -155,6 +175,8 @@ export default {
       saveTask,
       cancel,
       isFormValid,
+      doSomething,
+      textAreaRef,
     };
   },
 };

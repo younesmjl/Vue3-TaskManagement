@@ -63,7 +63,7 @@
           Supprimer
         </button>
         <button
-          class="button background-cblue-light with-margin-left"
+          class="button background-secondary with-margin-left"
           @click="() => toggle(task)"
         >
           modifier
