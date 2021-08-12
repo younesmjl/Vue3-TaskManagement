@@ -2,6 +2,9 @@ const storageKey = "tasks-vue-compo-api";
 let tasks = []; //a la place de la bdd
 
 function create(task) {
+  if (tasks === null) {
+    tasks = [];
+  }
   tasks = [task, ...tasks];
   save();
 }
