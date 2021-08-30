@@ -4,7 +4,7 @@
   <form v-on:submit.prevent="createTask">
     <input
       id="textName"
-      class="with-border-all border-width-1"
+      class="border-all border-width-1"
       type="text"
       v-model="name"
       placeholder="Nom de la tâche"
@@ -12,7 +12,7 @@
     />
     <br />
     <textarea
-      class="with-border-all border-width-1"
+      class="border-all border-width-1"
       cols="30"
       rows="10"
       v-model="description"

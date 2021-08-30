@@ -18,20 +18,20 @@
           <span class="text-uppercase text-M"> Modifier une tâche</span>
           <button class="modal__close" @click="cancel"></button>
         </div>
-        <div class="content-YM with-padding-all-20 background-cwhite">
+        <div class="content-YM padding-all-20 background-cwhite">
           <div class="body-YM">
             <form
               class="display-flex flex-direction-column"
               @submit.prevent="saveTask"
             >
               <input
-                class="border-all border-width-1 with-margin-bottom"
+                class="border-all border-width-1 margin-bottom"
                 type="text"
                 v-model="taskToEdit.name"
                 placeholder="Nom de la tâche"
               /><br />
               <textarea
-                class="border-all border-width-1 with-margin-bottom"
+                class="border-all border-width-1 margin-bottom"
                 v-model="taskToEdit.description"
                 rows="1"
                 placeholder="Description de la tâche"
@@ -40,7 +40,7 @@
               ></textarea
               ><br />
               <select
-                class="border-all-primary border-width-1 with-margin-bottom"
+                class="border-all-primary border-width-1 margin-bottom"
                 v-model="taskToEdit.temporality"
               >
                 <option
@@ -53,7 +53,7 @@
                 </option>
               </select>
               <div
-                class="display-flex justify-content-flex-end with-margin-top"
+                class="display-flex justify-content-flex-end margin-top"
               >
                 <button
                   class="button background-cblue"
@@ -62,7 +62,7 @@
                   sauvegarder
                 </button>
                 <button
-                  class="button background-cred with-margin-left"
+                  class="button background-cred margin-left"
                   @click="cancel"
                 >
                   annuler
@@ -74,7 +74,7 @@
             class="
               footer-YM
               border-top-primary border-width-1
-              with-margin-top-20
+              margin-top-20
               display-flex
               justify-content-space-between
               align-items-center
@@ -90,9 +90,9 @@
             <a
               class="
                 button
-                with-icon-left
+                icon-left
                 without-padding-all
-                with-margin-left-20
+                margin-left-20
               "
               href="tel:0613521838"
               ><i class="fa fa-mobile fa-2x"></i>06 13 52 18 38</a

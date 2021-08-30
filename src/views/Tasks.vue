@@ -15,7 +15,7 @@
   <div
     class="
       radio-filters
-      with-margin-top
+      margin-top
       display-flex
       align-items-center
       justify-content-center
@@ -54,16 +54,16 @@
     </label>
   </div>
   <div v-for="task in tasksFiltered" :key="task.id">
-    <div class="border-all-secondary with-margin-all-20">
+    <div class="border-all-secondary margin-all-20">
       <h3>Titre : {{ task.name }}</h3>
       <p>Description : {{ task.description }}</p>
       <p>Echéance: {{ tasksService.convertCase(task.temporality) }}</p>
-      <div class="with-margin-top">
+      <div class="margin-top">
         <button class="button background-cred" v-on:click="deleteTask(task.id)">
           Supprimer
         </button>
         <button
-          class="button background-secondary with-margin-left"
+          class="button background-secondary margin-left"
           @click="() => toggle(task)"
         >
           modifier
