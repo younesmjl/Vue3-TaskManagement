@@ -1,5 +1,11 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <div class="about"><GeneralTitle msg="Gestionnaire de tâches" /></div>
 </template>
+<script>
+import GeneralTitle from "@/components/GeneralTitle.vue";
+export default {
+  components: {
+    GeneralTitle,
+  },
+};
+</script>
