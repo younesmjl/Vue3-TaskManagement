@@ -1,4 +1,4 @@
-# vue3-taskManagement
+# Vue3-TaskManagement
 
 ## Project setup
 ```
