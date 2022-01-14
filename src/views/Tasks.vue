@@ -5,6 +5,7 @@
     @updatetask="updateTask($event)"
     @cancel="cancelEdit"
   />
+  <GeneralTitle msg="Gestionnaire de tâches" />
   <input
     class="border-all-primary border-width-1"
     type="text"
@@ -76,12 +77,14 @@
 <script>
 import { ref, watch } from "vue";
 import tasksService from "@/services/tasks.js";
+import GeneralTitle from "@/components/GeneralTitle.vue";
 import Modal from "@/components/Modal.vue";
 
 export default {
   name: "Tasks",
   components: {
     Modal,
+    GeneralTitle,
   },
   setup() {
     const tasks = ref("");

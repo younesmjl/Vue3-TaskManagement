@@ -1,20 +1,21 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Gestionnaire de tâches" />
+    <GeneralTitle msg="Gestionnaire de tâches" />
     <Form v-on:createtaskParent="addTask" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import GeneralTitle from "@/components/GeneralTitle.vue";
 import Form from "@/components/Form.vue";
+
 import tasksService from "@/services/tasks.js";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    GeneralTitle,
     Form,
   },
   setup() {

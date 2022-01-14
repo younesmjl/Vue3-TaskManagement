@@ -1,16 +1,20 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>Cette app vous permet de planifier vos actions</p>
+    <TypeIt />
   </div>
 </template>
-
+titre génral
 <script>
+import TypeIt from "@/components/TypeIt.vue";
 export default {
-  name: "HelloWorld",
+  name: "generalTitle",
+  components: {
+    TypeIt,
+  },
   props: {
-    msg: String
-  }
+    msg: String,
+  },
 };
 </script>
 
