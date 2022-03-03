@@ -14,13 +14,7 @@
     @keyup="filter"
   />
   <div
-    class="
-      radio-filters
-      margin-top
-      display-flex
-      align-items-center
-      justify-content-center
-    "
+    class="radio-filters margin-top display-flex align-items-center justify-content-center"
   >
     <label for="all">
       <input type="radio" id="all" value="" v-model="selectedTemporality" />

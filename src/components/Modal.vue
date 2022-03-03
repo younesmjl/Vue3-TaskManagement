@@ -7,13 +7,7 @@
     <div class="modal-bg-YM">
       <div class="general-content-YM">
         <div
-          class="
-            header-YM
-            display-flex
-            justify-content-space-between
-            align-items-center
-            background-primary-light
-          "
+          class="header-YM display-flex justify-content-space-between align-items-center background-primary-light"
         >
           <span class="text-uppercase text-M"> Modifier une tâche</span>
           <button class="modal__close" @click="cancel"></button>
@@ -52,9 +46,7 @@
                   {{ tempo.name }}
                 </option>
               </select>
-              <div
-                class="display-flex justify-content-flex-end margin-top"
-              >
+              <div class="display-flex justify-content-flex-end margin-top">
                 <button
                   class="button background-cblue"
                   :disabled="!isFormValid"
@@ -71,14 +63,7 @@
             </form>
           </div>
           <div
-            class="
-              footer-YM
-              border-top-primary border-width-1
-              margin-top-20
-              display-flex
-              justify-content-space-between
-              align-items-center
-            "
+            class="footer-YM border-top-primary border-width-1 margin-top-20 display-flex justify-content-space-between align-items-center"
           >
             <a
               class="button background-primary"
@@ -88,12 +73,7 @@
               ><i class="fas fa-envelope"></i>Contactez-moi</a
             >
             <a
-              class="
-                button
-                icon-left
-                without-padding-all
-                margin-left-20
-              "
+              class="button icon-left without-padding-all margin-left-20"
               href="tel:0613521838"
               ><i class="fa fa-mobile fa-2x"></i>06 13 52 18 38</a
             >
